@@ -8,7 +8,7 @@ const Header = () => {
    {/* Left */}
    <div className="header__left">
     <img src={LinkedIn} alt="LinkedInIcon" />
-    <div className="header__search">
+    <div className="header__search ">
      <SearchIcon />
 
      <input type="search" placeholder="Search" />
