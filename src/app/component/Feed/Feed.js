@@ -10,16 +10,18 @@ import InputOption from '../InputOption/InputOption'
 import Post from '../Post/Post'
 import { db } from '../../../Api/firebase'
 import { collection, addDoc, doc, getDocs, getDoc } from 'firebase/firestore'
+import { useSelector } from 'react-redux'
+import { selectUser } from '../../../features/userSlice'
 const Feed = () => {
   const [posts, setPosts] = useState([])
   const [input, setInput] = useState('')
-
+  const user = useSelector(selectUser);
   const AddData = async () => {
     let docRef = await addDoc(collection(db, 'posts'), {
-      name: 'Muhammad Shahrukh . 2nd',
-      description: 'React Native',
+      name: `${user?.displayName}. 2nd`,
+      description: user?.email,
       message: input,
-      photoUrl: Picture,
+      photoUrl: user?.photoUrl || '',
     })
     console.log('doc', docRef)
   }
@@ -48,7 +50,7 @@ const Feed = () => {
       <div className='feed__inputContainer'>
         <div className='feed__input'>
           <CreateIcon />
-          <form onSubmit>
+          <form>
             <input
               type='text'
               placeholder='Start a post'
@@ -71,22 +73,26 @@ const Feed = () => {
           />
         </div>
       </div>
+
       <div className='feed__showallfeeds'>
-        {posts ? (
-          posts.map(
-            ({ id, data: { name, description, message, photoUrl } }) => (
-              <Post
-                key={id}
-                name={name}
-                description={description}
-                message={message}
-                photoUrl={photoUrl}
-              />
-            )
+
+
+
+        {posts.map(
+          ({ id, data: { name, description, message, photoUrl } }) => (
+            <Post
+              key={id}
+              name={name}
+              description={description}
+              message={message}
+              photoUrl={photoUrl}
+            />
+
           )
-        ) : (
-          <h4>Loading....</h4>
-        )}
+        )
+        }
+
+
       </div>
     </div>
   )

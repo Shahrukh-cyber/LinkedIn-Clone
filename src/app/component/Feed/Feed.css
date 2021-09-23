@@ -1,6 +1,6 @@
 .feed {
   flex: 0.6;
-  margin: 0 20px;
+  margin: 0 20px;  
 }
 .feed__inputContainer {
   background-color: white;
@@ -34,4 +34,8 @@
 }
 .feed__input > form > button {
   display: none;
+}
+.feed__showallfeeds{
+  transition-duration: .5;
+  scale: 2;
 }

@@ -9,9 +9,15 @@ import JobIcon from '@material-ui/icons/LocalMallSharp';
 import ChatIcon from '@material-ui/icons/Chat'
 import NotificationIcon from "@material-ui/icons/Notifications";
 import Picture from '../../assets/MyPic.jpeg'
-
-
+import { logout } from '../../../features/userSlice';
+import { useDispatch } from "react-redux";
+import { auth } from '../../../Api/firebase'
 const Header = () => {
+ const dispatch = useDispatch();
+ const LogoutUser = () => {
+  dispatch(logout());
+  auth.signOut();
+ }
  return (
   <div className="header">
    {/* Left */}
@@ -31,7 +37,7 @@ const Header = () => {
     <HeaderOption title="jobs" Icon={JobIcon} />
     <HeaderOption title="Messaging" Icon={ChatIcon} />
     <HeaderOption title="Notifications" Icon={NotificationIcon} />
-    <HeaderOption title="Me" avatar={Picture} />
+    <HeaderOption title="Me" avatar={true} onClick={LogoutUser} />
    </div>
 
 

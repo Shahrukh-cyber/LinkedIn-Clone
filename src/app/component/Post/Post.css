@@ -1,7 +1,7 @@
 .post {
   background-color: white;
   border-radius: 10px;
-  border-bottom: 10px;
+  margin-bottom: 15px;
   padding: 10px;
   /* border: 1px solid red; */
 }
@@ -26,4 +26,7 @@
 .post__buttons {
   display: flex;
   justify-content: space-evenly;
+}
+.MuiAvatar-root{
+  position:static !important;
 }

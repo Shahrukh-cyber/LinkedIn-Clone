@@ -1,8 +1,8 @@
 .sidebar {
+
   top: 80px;
-  position: sticky;
+  position:sticky;
   flex: 0.2;
-  /* border: 1px solid red; */
   border-radius: 10px;
   height: fit-content;
   align-items: center;
